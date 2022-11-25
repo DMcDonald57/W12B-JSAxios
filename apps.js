@@ -1,19 +1,23 @@
 
+// Successful response function
+
 function goodActivity(response) {
-    let data = response.activity;
+    let data = response.data.activity;
     document.getElementById(`Action`).insertAdjacentHTML(`afterend`,`<p>${data}</p>`);
-    console.log(data);
 }
+
+// failure response function
 
 function badActivity(error) {
     document.body.insertAdjacentHTML(`afterend` `<h3>Please Try again.</h3>`)
-    console.log(`failure`);
 }
 
+// the Axios request
 function getActivity() {
     axios.request({
     url : `http://www.boredapi.com/api/activity/`
 }).then(goodActivity).catch(badActivity);
 }
 
+// event listener for the buttons
 document.getElementById(`Action`).addEventListener(`click`,getActivity);
